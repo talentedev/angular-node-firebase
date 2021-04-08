@@ -1,0 +1,60 @@
+.navbar-brand {
+    cursor: pointer;
+}
+.logo {
+    width: 160px;
+}
+.navbar-brand.active {
+    cursor: pointer;
+}
+
+.fixed-height-nav {
+    height: 110px;
+}
+
+nav .nav-item {
+    margin-right: 1.5rem;
+}
+
+nav .nav-item.active {
+    color: #2fa4f3;
+}
+
+nav .nav-item .nav-link {
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #0872ba;
+    cursor: pointer;
+}
+
+nav .nav-item .nav-link:hover {
+    color: #0872ba;
+    text-decoration: underline;
+}
+
+@media (max-width: 768px)  and (min-width: 100px) {
+    .navbar {
+        padding: 0;
+    }
+    .navbar-collapse {
+        text-align: center;
+        background-color: #c7eef9;
+    }
+    .btn-allgive-primary {
+        margin-bottom: 15px;
+    }
+
+    .nav-item {
+      margin-right: 1.5rem;
+      text-align:right;
+      border-bottom: 1px inset #ccc;
+      margin-right: 0px;
+      padding-right: 1em;
+    }
+
+    .nav-bar {
+      padding: 0px;
+    }
+}

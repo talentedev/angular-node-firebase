@@ -1,0 +1,328 @@
+/* Common Styles */
+.section {
+    padding: 50px 100px;
+    color: #323232;
+}
+.section .section-title {
+    color: #0004d0;
+    margin-bottom: 25px;
+}
+@media (max-width: 1200px) {
+    .section {
+        padding: 20px;
+    }
+}
+.pointer {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+/* Donation Statistics */
+.donation-statistics {
+    background-color: #e9ecef;
+    .overview {
+        position: relative;
+        .btn-export {
+            position: absolute;
+            right: 15px;
+            top: -65px;
+            background-color: white;
+            border-radius: 0;
+            color: #323232;
+        }
+        .btn-export:hover {
+            background-color: #ddd;
+        }
+    }
+    @media (max-width: 576px) {
+        h1 {
+            font-size: 35px;
+        }
+        .overview {
+            .btn-export {
+                left: 22%;
+                text-align: center;
+                width: 200px;
+                top: 310px;
+            }
+            .chart-wrapper {
+                margin-top: 60px;
+            }
+        }
+    }
+}
+.donation-statistics .dropdown button {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    padding: 1rem;
+    color: #323232 !important;
+}
+.btn-outline-primary:hover,
+.show>.btn-outline-primary.dropdown-toggle {
+    color: white !important;
+}
+.dropdown {
+    .dropdown-toggle {
+        margin: 0;
+        border: none !important;
+        box-shadow: none;
+        &:hover {
+            background-color: #2fa4f3 !important;
+        }
+    }
+    .dropdown-menu {
+        padding: 0;
+        width: 100%;
+        text-align: center;
+        opacity: 1 !important;
+    }
+}
+.donation-statistics .dropdown-menu button {
+    margin-top: 2px;
+    color: white !important;
+}
+.dropdown-color-0 {
+    background-color: #82C6F7 !important;
+}
+.dropdown-color-1 {
+    background-color: #66A7D1 !important;
+}
+.dropdown-color-2 {
+    background-color: #8890B4 !important;
+}
+.dropdown-color-3 {
+    background-color: #A0BACB !important;
+}
+.dropdown-color-4 {
+    background-color: #b7b1b1 !important;
+}
+.donation-item {
+    border-left: 5px solid #074C7C;
+    text-align: left;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+.donation-item p {
+    color: #074C7C;
+    margin: 0;
+}
+.opacity-5 {
+    opacity: 0.5;
+}
+/* Manage contributions */
+.btn-add-charity {
+    // position: absolute;
+    // right: 15px;
+    bottom: 0;
+    background-color: #e9ecef;
+    border-radius: 0;
+    color: #323232;
+}
+.btn-add-charity:hover {
+    background-color: #ddd;
+}
+.active-charities .card {
+    border-radius: 0;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    margin-top: 5px;
+}
+.active-charities .charity-details {
+    background-color: #2fa4f3;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 100%;
+    -webkit-transform: translateY(450px);
+    transform: translateY(450px);
+    transition: -webkit-transform .666s ease-in-out;
+    transition: transform .666s ease-in-out;
+    transition: transform .666s ease-in-out, -webkit-transform .666s ease-in-out;
+    overflow: hidden;
+    padding: 0;
+    color: white;
+}
+.active-charities .charity-details p {
+    margin-bottom: 5px;
+}
+.btn-manage-charity {
+    color: #0004d0;
+    border-radius: 0;
+    padding: 10px 40px;
+    background-color: #e9ecef;
+    margin-top: 10px
+}
+.active-charities .card:hover .charity-details {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+}
+.charity-manage {
+    .card {
+        background-color: #e9ecef;
+        border: 1px solid #ddd;
+    }
+    .btn-more-charity {
+        background-color: #0004D1;
+        border-radius: 0;
+        color: white;
+        width: 100%;
+    }
+    .charity-manage-detail {
+        background-color: #0004D1;
+        color: white;
+        padding-bottom: 20px;
+        .btn-close {
+            background-color: transparent;
+            color: white;
+            font-size: 25px;
+            font-weight: bolder;
+            border: none;
+            cursor: pointer;
+        }
+        .price-compare {
+            border-top: 2px solid #5867E9;
+            border-bottom: 2px solid #5867E9;
+            background-color: #1344DE;
+            margin-bottom: 15px;
+            padding: 15px;
+        }
+        .btn-cancel {
+            background-color: #0004D1;
+            color: white;
+        }
+        .btn-save {
+            background-color: #e9ecef;
+            border-radius: 0;
+            color: #323232;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 25px;
+            }
+        }
+    }
+    .donation-dropdown-wrapper {
+        margin: 20px 50px;
+        padding: 10px;
+        background-color: #e9ecef;
+        color: #323232;
+        .dropdown button {
+            width: 100%;
+            border: none;
+            border-radius: 0;
+            padding: 1rem;
+            cursor: pointer;
+            &:hover {
+                background-color: #0004d17d;
+            }
+        }
+        span {
+            color: #0004D1;
+        }
+        sup {
+            font-size: 56%;
+        }
+        p {
+            color: #2B77B0;
+        }
+        @media (max-width: 768px) {
+            .h1 {
+                font-size: 18px;
+            }
+            .h3 {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+/* Payment Settings */
+.hero-payments .card-info {
+    background-color: #f4f3f3;
+    margin: 0 0 5px 0;
+    padding: 30px 10px;
+}
+.hero-payments .payment-methods {
+    position: relative;
+}
+.hero-payments .default-payment {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+}
+.hero-payments .card-info button {
+    background-color: white;
+    margin: 0;
+}
+.hero-payments .card-info div {
+    line-height: 3rem;
+}
+.expand-payment-details {
+    padding: 2.5rem;
+    background-color: #fff;
+    border-bottom: 2px solid #e4e8eb;
+    line-height: 1.5;
+}
+.expand-payment-details h5 {
+    font-size: 1rem;
+}
+.expand-payment-details .name-title, .expand-payment-details .address-title {
+    font-weight: 700;
+    color: #333;
+}
+.expand-payment-details .name-info, .expand-payment-details .address-info {
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: .75rem;
+}
+.expand-payment-details .name-info span, .expand-payment-details .address-info span {
+    display: block;
+}
+.expand-payment-details .card-options {
+    font-family: 'Montserrat', sans-serif;
+    font-size: .75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 2;
+}
+.expand-payment-details .card-options .delete-card {
+    color: #c10442;
+}
+.expand-payment-details .card-options .edit:hover, .expand-payment-details .card-options .edit:active, .expand-payment-details .card-options .lost-or-stolen:hover, .expand-payment-details .card-options .lost-or-stolen:active, .expand-payment-details .card-options .delete-card:hover, .expand-payment-details .card-options .delete-card:active {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.expand-payment-details ul.payment-charities {
+    width: 100%;
+    background-color: #f8f8f8;
+    padding: 2rem;
+    list-style: none;
+}
+.expand-payment-details ul.payment-charities li {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+.expand-payment-details ul.payment-charities li:last-of-type {
+    margin-bottom: 0;
+}
+
+/deep/ ngx-loading  {
+    div>div.backdrop {
+        position: fixed !important;
+    }
+    div>div[ng-reflect-ng-switch]>div.spinner-three-bounce {
+        position: fixed !important;
+    }   
+}
+
+.chart-div {
+  display: block;
+  overflow: auto;
+  max-height: 350px;
+}

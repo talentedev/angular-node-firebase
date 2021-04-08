@@ -1,0 +1,89 @@
+mdb-carousel-item {
+    img {
+        min-height: 400px;
+        object-fit: cover;
+    }
+    .carousel-caption {
+        top: 100px;
+        @media (max-width: 1460px) {
+            top: 50px
+        }
+        @media (max-width: 576px) {
+            top: 20px;
+        }
+    }
+}
+#carousel-text {
+    text-shadow: 3px 3px 5px #000;
+    padding: 1.5em;
+    border-radius: 1em;
+    @media (max-width: 1360px) {
+        h1 {
+            font-size: 40px;
+        }
+        p {
+            font-size: 20px;
+        }
+    }
+}
+.featured {
+    text-shadow: 3px 3px 5px #000;
+    font-style: italic;
+    font-size: 1rem;
+    a {
+        color: #fff;
+        text-decoration: underline;
+        font-style: normal;
+        margin-left: 5px;
+        text-shadow: 3px 3px 2px #000;
+        font-weight: bold !important;
+    }
+}
+.button {
+    width: 10rem;
+    height: 3rem;
+    border: 1px solid white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #058cb3;
+    cursor: pointer;
+    text-shadow: none;
+    @media (max-width: 1360px) {
+        font-size: 15px;
+    }
+}
+
+h1 {
+    margin-bottom: 1.5rem;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 1.75rem;
+    line-height: 1.75rem;
+}
+
+@media (max-width: 992px) {
+    #carousel-text {
+        text-align: center !important;
+    }
+    #carousel-text .button{
+        margin: 0 auto;
+    }
+}
+@media (max-width: 576px) {
+    #carousel-text h1 {
+        font-size: 28px;
+        text-align: center !important;
+    }
+    #carousel-text p {
+        font-size: 22px;
+    }
+    .featured {
+        font-size: 1rem !important;
+    }
+}

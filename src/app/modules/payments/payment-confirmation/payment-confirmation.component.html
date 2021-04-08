@@ -1,0 +1,30 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="back pull-left" aria-label="Back" (click)="back()">
+      <span aria-hidden="true"><mdb-icon fas icon="chevron-left"></mdb-icon></span>
+    </button>
+    <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button> -->
+    <h4 class="modal-title text-center w-100" id="myModalLabel">Confirm Your Donation</h4>
+  </div>
+  <div class="modal-body text-dark text-center">
+    <div class="row align-items-center">
+      <div class="col">
+        <p>Donating to: {{ charity.title }}</p>
+        <p>Donation Amount: {{ donation.donationAmount | currency }}</p>
+        <p>Donation Frequency: {{ donation.donationFrequency }}</p>
+        <div *ngIf="invalidCard" class="alert alert-danger" role="alert">
+          <strong>{{ errorMessage }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" color="primary" class="relative waves-light" mdbWavesEffect (click)="onSubmit()">
+      <fa-icon *ngIf="isSubmitting" [icon]="faSpinner" [spin]="true" class="mr-2"></fa-icon>
+      <span *ngIf="!invalidCard">{{ isSubmitting ? 'Submitting...' : 'Submit' }}</span>
+      <span *ngIf="invalidCard">Cancel</span>
+    </button>
+  </div>
+</div>

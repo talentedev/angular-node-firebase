@@ -1,0 +1,47 @@
+<main class="jumbotron">
+  <section *ngIf="!success" class="container">
+    <h2>How Does AllGive Work?</h2>
+    <h3>Step 1: Create Your Account</h3>
+    <p>Just tell us your email address and we'll send you an activation link to get started. There are no passwords to remember and you can get started right away.</p>
+    <h3>Step 2: Choose a Charity</h3>
+    <p>Visit our ever-growing list of charitable organizations and select the one to which you want to make a regular contribution. Simply click the "Donate" button and AllGive will allow you to choose how much you'd like to contribute and how often. Our system will handle the rest.</p>
+    <p>That's all there is to it! You can choose how frequently you'd like emailed reports on your giving, and you can always see how your donations are making a difference by visiting your <span *ngIf="isAuthenticated() == false">personal Dashboard page</span><a *ngIf="isAuthenticated()" routerLink="/user/dashboard">personal Dashboard page</a>.</p>
+    <h3 *ngIf="!authService.authState">Let's get started!</h3>
+    <div *ngIf="!authService.authState" class="row">
+      <form [formGroup]="signupForm"
+            id="signupForm" class="col-md-6" 
+            (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName" required>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName" required>
+        </div>
+
+        <div class="form-group">
+          <input type="email" class="form-control" id="email" placeholder="Email Address" formControlName="email" required>
+        </div>
+
+        <div *ngIf="invalid" class="alert alert-danger" role="alert">
+          <strong>The email address you entered is already associated with an AllGive account. <a routerLink="/link-login">Click Here to Login</a></strong>
+        </div>
+
+        <div *ngIf="inactive" class="alert alert-danger" role="alert">
+          <strong>An account has already been created using that email address. Please check your Inbox for your secure login link.</strong>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!signupForm.valid">Create Account</button>
+
+      </form>
+    </div>
+  </section>
+  <section *ngIf="success" class="container success-container">
+    <h2>Congratulations!</h2>
+    <p>We've sent an email to {{ signupForm.value.email }} with a secure login link you can use to log in to your account. Click that from any device and you can get started immediately. Thanks for joining the AllGive community!</p>
+    <p><small>(You can close this window.)</small></p>
+    <!-- <h2>Thanks for Registering!</h2>
+    <p>AllGive is still in beta and not yet open to the public. We've saved your information and will let you know when we launch! Thanks for joining the AllGive community!</p> -->
+  </section>
+</main>

@@ -1,0 +1,28 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="back pull-left" aria-label="Back" (click)="back()">
+      <span aria-hidden="true"><mdb-icon fas icon="chevron-left"></mdb-icon></span>
+    </button>
+    <h4 class="modal-title text-center w-100" id="myModalLabel">Customize Your Donation</h4>
+  </div>
+  <div class="modal-body p-4 text-dark">
+    <label for="donationAmount">Donation Amount</label>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text">$</span>
+      </div>
+      <input [(ngModel)]="donationAmount" type="text" id="donationAmount" class="form-control text-right" aria-label="Amount (to the nearest dollar)">
+    </div>
+    <p *ngIf="invalidAmount" class="text-danger">{{ errorMsg }}</p>
+    <label for="donationSchedule">Donation Schedule</label>
+    <select [(ngModel)]="donationSchedule" class="browser-default custom-select mb-4" id="donationSchedule">
+      <option value="day">Daily</option>
+      <option value="week" selected>Weekly</option>
+      <option value="month">Monthly</option>
+      <option value="year">Yearly</option>
+    </select>
+  </div>
+  <div class="modal-footer">
+    <button type="button" color="primary" class="relative waves-light" mdbWavesEffect (click)="next()">Next</button>
+  </div>
+</div>

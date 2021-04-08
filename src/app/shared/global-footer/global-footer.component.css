@@ -1,0 +1,58 @@
+footer {
+    background-color: #058cb3;
+}
+
+footer .footer-logo {
+    margin-bottom: 2rem;
+}
+
+footer .footer-logo img {
+    width: 140px;
+}
+
+footer .copyright {
+    font-size: 0.75rem;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+footer a {
+    color: #fff;
+    font-weight: 700;
+}
+
+footer .button {
+    border: none;
+    background-color: #2fa4f3;
+    font-family: "Montserrat", sans-serif;
+    padding: 0.5rem 2rem;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+footer .btn-allgive-primary {
+    width: 100%;
+}
+
+@media (max-width: 576px) {
+    footer .footer-logo {
+        margin-bottom: 1rem;
+    }
+    footer, footer .footer-content {
+        height: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+    footer .btn-allgive-primary {
+        width: 70%;
+        text-align: center;
+    }
+    footer .copyright {
+        text-align: center !important;
+    }
+}

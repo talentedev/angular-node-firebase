@@ -1,0 +1,18 @@
+.transactions {
+    margin-top: 1px;
+    thead th:nth-child(2) {
+        text-align: left;
+    }
+    .truncate {
+        width: 270px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    table ,tr td, th{
+        border:1px solid gray;
+        white-space: nowrap;
+    }
+    .pointer {
+        cursor: pointer;
+    }
+}

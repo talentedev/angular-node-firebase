@@ -1,0 +1,141 @@
+@import url(../node_modules/bootstrap/dist/css/bootstrap.min.css);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300light,300italic,400regular,400italic,700bold,700italic,700bolditalic');
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+// @import url('https://fonts.googleapis.com/css?family=Nunito:sans+serif,700bold,600semibold,400bold,400regular,400italic,900black');
+// @import url('https://fonts.googleapis.com/css?family=Montserrat:bold');
+
+@font-face {
+    /* Nunito-Bold */
+    font-family: 'Nunito-bold';
+    font-style: normal;
+    font-display: auto;
+    src: url("./assets/fonts/Nunito/Nunito-Bold.ttf");
+    src: local("Nunito Bold"), local("Nunito-Bold"), url("./assets/fonts/Nunito/Nunito-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    /* Nunito*/
+    font-family: 'Nunito';
+    font-style: normal;
+    font-display: auto;
+    src: url("./assets/fonts/Nunito/Nunito-SemiBold.ttf");
+    src: local("Nunito SemiBold"), local("Nunito-SemiBold"), url("./assets/fonts/Nunito/Nunito-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+    /* Nunito*/
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-display: auto;
+    src: url("./assets/fonts/Nunito/Nunito-Bold.ttf");
+    src: local("Montserrat Bold"), local("Montserrat-Bold"), url("./assets/fonts/montserrat/Montserrat-Bold.otf") format("opentype");
+}
+
+
+// Variables
+$primary-color: #0872BA;
+$secondary-color: #0004d0;
+
+/* ########## Global: Start ########## */
+
+body {
+    font-family: "Nunito-bold", sans-serif;
+    font-weight: 400;
+    color: #fff;
+}
+
+main {
+    margin-top: 80px;
+    width: 100%;
+}
+
+.jumbotron {
+    padding: 0;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 3rem;
+}
+
+.arrow-right {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/* ########## Global: End ########## */
+.color-primary {
+    color: $primary-color;
+}
+.color-secondary {
+    color: $secondary-color;
+}
+.btn-allgive-primary {
+    padding: 15px 30px;
+    color: white;
+    border-radius: 0;
+    background: #2fa4f3;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    &:hover {
+        color: white;
+        background-color: #5fb9f6;
+    }
+}
+
+#page-wrapper .text.page-text {
+    font-size: 1.25rem;
+    color: #000;
+}
+
+#page-wrapper .text h1 {
+    color: #000000;
+}
+
+// Payment Modal Styles
+.modal {
+    font-family: 'Nunito', sans-serif;
+    .modal-title {
+        color: $secondary-color;
+    }
+    .modal-footer {
+        padding: 0;
+        button {
+            width: 100%;
+            background-color: $primary-color;
+            border: none;
+            padding: 15px;
+            color: white;
+        }
+    }
+    .back {
+        background-color: transparent;
+        border: 0;
+        -webkit-appearance: none;
+    }
+}
+
+// Cookie conset styles
+.cc-window {
+    padding: 30px 6%;
+    .cc-allow {
+        background-color: #0a8cc9 !important;
+        text-decoration: none;
+        &:hover {
+            background-color: #006cae !important;
+        }
+    }
+    .cc-dismiss {
+        background-color: rgb(87, 87, 87) !important;
+        border-color: transparent;
+        margin-right: 15px;
+        text-decoration: none !important;
+        &:hover {
+            background-color: #414141 !important;
+        }
+    }
+}
+.cc-revoke.cc-bottom {
+    display: none;
+}

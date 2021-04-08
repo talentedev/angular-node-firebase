@@ -1,0 +1,40 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="back pull-left" aria-label="Back" (click)="back()">
+      <span aria-hidden="true"><mdb-icon fas icon="chevron-left"></mdb-icon></span>
+    </button>
+    <h4 class="modal-title text-center w-100" id="myModalLabel">Select Your Payment Method</h4>
+  </div>
+  <div class="modal-body text-left p-4">
+    <div *ngFor="let card of cards" class="form-check mb-2">
+      <input class="form-check-input with-gap" type="radio" name="selectedCard" [checked]="selectedCard != null && selectedCard.id == card.id"
+        id="{{ card.id }}" value="{{ card.id }}" (click)="onChangeCard(card)" mdbInput>
+      <label class="form-check-label text-dark" for="{{ card.id }}">
+        <img src="../../../assets/images/{{ card.brand.toLowerCase() }}.png" class="pr-3">
+        ****{{ card.last4 }}
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input with-gap" type="radio" name="selectedCard" id="newCard" value="newCard" checked (click)="onChangeCard(null)" mdbInput>
+      <label class="form-check-label text-dark" for="newCard">
+        New Card
+      </label>
+    </div>
+    <div id="card-number" [ngStyle]="{'visibility': isNewCard ? 'visible': 'hidden'}"></div>
+    <div *ngIf="isNewCard" class="form-group row">
+      <label for="firstName" class="col-sm-4 col-form-label text-dark">Name on Card</label>
+      <div class="col-sm-8">
+        <input [(ngModel)]="customerName" type="text" id="customerName" class="form-control" placeholder="Name on Card">
+      </div>
+    </div>
+    <div *ngIf="invalidCard" class="alert alert-danger" role="alert">
+      <strong>{{ errorMessage }}</strong>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" color="primary" class="relative waves-light" mdbWavesEffect (click)="open()">
+      <fa-icon *ngIf="isSubmitting" [icon]="faSpinner" [spin]="true" class="mr-2"></fa-icon>
+      <span>{{ isSubmitting ? 'Processing...' : 'Next' }}</span>
+    </button>
+  </div>
+</div>

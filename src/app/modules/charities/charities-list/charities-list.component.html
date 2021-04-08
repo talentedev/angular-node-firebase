@@ -1,0 +1,44 @@
+<main role="main">
+
+  <div class="jumbotron">
+    <div class="container pt-5 pb-5">
+      <h3 class="display-5 text-dark">Here are all the charities currently supported on the AllGive platform.</h3>
+      <p class="lead text-dark">Select one to view more information about its mission and start donating. Check back often as we are always adding new charities. Use the search box or drop-down to filter the list.</p>
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-outline-primary" id="filterDropdown" ngbDropdownToggle>{{ activeCategory }}</button>
+        <div ngbDropdownMenu aria-labelledby="filterDropdown">
+          <button class="dropdown-item" (click)="getAllCharities()">All</button>
+          <button class="dropdown-item" *ngFor="let category of categories" (click)="getCharitiesByCategory(category)">{{ category }}</button>
+        </div>
+      </div>
+      <div class="d-inline-block">
+        <input type="text" class="form-control search-input" placeholder="Search for name" (input)="onSearchCharity($event.target.value)">
+      </div>
+    </div>
+  </div>
+  
+  <section class="charity-grid">
+    <div class="row m-0">
+      <div class="card-wrapper col-6 col-md-3" *ngFor="let charity of filteredCharities">
+        <div class="card">
+          <!-- <a href="#" [routerLink]="['/charities', charity.fields.slug]"> -->
+            <a href="#" [routerLink]="['/', charity.slug]">
+            <div class="card-image">
+              <div class="card-cover" [style.backgroundImage]="'url(' + charity?.coverImage +')'"></div>
+              <div class="card-charity-text">
+                <div class="card-urgent" *ngIf="charity?.urgent">Urgent help is needed!</div>
+                <div class="charity-name">{{ charity?.title }}</div>
+                <div class="charity-brief-description">{{ charity?.briefDescription }}</div>
+                <div class="card-cta">Learn more or take action</div>
+              </div>
+              <img class="logo" src="{{ charity?.logo }}">
+            </div>
+          </a>
+        </div>
+      </div>
+      <div *ngIf="filteredCharities.length == 0 && searchText.length > 1" class="container alert alert-danger mt-4" role="alert">
+        <span>No results found. If you would like to have a charity added to AllGive, please send an email to <a href="mailto:help@allgive.org">help@allgive.org</a> and we will gladly consider your request and send you a notification when your charity has been added.</span>
+      </div>
+    </div>
+  </section>
+</main>

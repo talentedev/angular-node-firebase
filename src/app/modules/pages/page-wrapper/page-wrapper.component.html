@@ -1,0 +1,16 @@
+<main id="page-wrapper" role="main">
+  <div class="container text">
+      <div class="row name justify-content-center">
+          <div class="col-8 pt-5">
+              <h1>{{ pageTitle }}</h1>
+          </div>
+      </div>
+  </div>
+  <div class="container text page-text">
+      <div class="row justify-content-center">
+          <div class="col-8 pt-3">
+            <div [innerHTML]="pageContent | mdToHtml"></div>
+          </div>
+      </div>
+  </div>
+</main>

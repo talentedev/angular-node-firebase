@@ -1,0 +1,273 @@
+main {
+    margin-top: 80px;
+}
+.cup_section img{
+    width:100%;
+    object-fit: cover;
+    object-position: center;
+}
+.money_section img{
+    width:100%;
+    object-fit: cover;
+    object-position: center;
+}
+.americans_spend img{
+    width: 100%;
+    height:715px;
+    object-fit: cover;
+    object-position: center;
+}
+.cinema_section img{
+   width: 107%;
+    object-fit: cover;
+    margin: 0 -42px;
+    object-position: center;
+}
+.tittleCol h1{
+	font-size: 56px;
+	font-weight:bolder;
+	color: #058cb3;
+	line-height: 64px;
+    text-align: center;
+    margin: 30px 0px;
+}
+.tittleCol p {
+    font-size: 30px;
+    line-height:45px;
+    color: #000;
+    margin:0;
+}
+.money_section {
+    margin: 100px 0 150px;
+}
+.allgive_description{
+    padding: 50px;
+}
+.manImg {
+    float:left;
+    margin-right: 15px;
+}
+.manImg img {
+    height: 600px;
+    margin-right: 30px;
+    width:100%;
+}
+.story_heading h1{
+    font-size: 56px;
+    font-weight:bolder;
+    color:#4599d4;
+    line-height: 64px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.story_heading p{
+    font-size: 30px;
+    line-height: 45px;
+    color: #000;
+    text-align: justify;
+    margin: 0px;
+}
+.story_content p {
+    font-size: 30px;
+    line-height: 40px;
+    color: #000;
+    text-align: justify;
+    margin-left:77px;
+}
+
+.headingSpace{
+    margin-top: 100px;
+}
+.happy_hours img {
+    width: 100%;
+    height: 340px;
+    margin: 10px;
+    object-position: center;
+    object-fit: cover;
+}
+.bluebg{
+    background-color: #0757A4;
+}
+.happy_hours_cont{
+    margin:15px;
+}
+.happy_hours_cont h2{
+    color:#fff;
+    font-weight: bold;
+    font-size:38px;
+    max-width: 100%;
+}
+.bottomLine{
+    position: relative;
+  padding-bottom:15px;
+}
+.bottomLine:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    right: 0;
+    height: 4px;
+    background-color: #fff;
+}
+.happy_hours_cont p{
+    font-size: 24px;
+    color:#fff;
+    text-align: justify;
+}
+
+.happy_hours_cont {
+    margin: 16px;
+}
+.happy_hours{
+    margin: 100px 0px;
+}
+.spendImg {
+    position: relative;
+}
+.spend_cont {
+    max-width: 460px;
+    background-color: #fff;
+    border: 12px solid #231f20;
+    padding: 0px 25px;
+    position: absolute;
+    top: 4%;
+    left: 30%;
+    opacity: 0.9;
+}
+.spend_cont h2{
+    font-size: 32px;
+    font-weight: 700;
+    color:#231f20;
+}
+.blackbottom {
+    position: relative;
+    padding-bottom: 20px;
+}
+.blackbottom:after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right:0;
+    bottom: 0;
+    height: 4px;
+    background-color:#231f20;
+}
+.spend_cont p {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: justify;
+    padding: 0px 15px;
+    color: #231f20;
+}
+.americans_spend {
+    margin: 100px 0px;
+}
+.cinema_section{
+    margin:0 0 100px;
+}
+
+/*responsive section starts*/
+@media (max-width:1199px){
+.manImg img {
+    height: 643px;
+}
+.spend_cont{
+    left:25%;
+}
+.happy_hours_cont p{
+    font-size: 21px;
+}
+.happy_hours_cont h2{
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+.happy_hours img{
+    margin:15px 0;
+}
+}
+@media (max-width:991px){
+.tittleCol h1, .story_heading h1{
+    font-size: 43px;
+    line-height: 47px;
+}
+.tittleCol p, .story_heading p {
+    font-size: 28px;
+    line-height: 40px;
+}
+.story_heading h1{
+    text-align: center;
+}
+.story_content p{
+    margin-left: 0px;
+}
+.manImg {
+    float: none;
+    text-align: center;
+    margin-bottom: 50px;
+    margin-right: 0;
+}
+.manImg img{
+    margin:0px;
+}
+.headingSpace{
+    margin-top: 0px;
+}
+.happy_hours img{
+    margin:15px 0 0 0;
+}
+.americans_spend img{
+    display: none;
+}
+.spend_cont{
+    position: static;
+    margin:0 auto;
+}
+.money_section {
+    margin: 100px 0 50px;
+}
+.happy_hours_cont h2{
+    max-width: 100%
+}
+.cinema_section img {
+    width: 100%;
+    margin:0px;
+}
+}
+@media (max-width:767px){
+.happy_hours_cont h2{
+    font-size: 34px;
+}
+.happy_hours_cont p {
+    font-size: 23px;
+    line-height: 37px;
+}
+.americans_spend {
+  margin: 60px 0px;
+}
+.cinema_section{
+  margin: 0 0 20px;
+}
+}
+
+@media (max-width:480px){
+    .tittleCol h1, .story_heading h1{
+        font-size: 28px;
+        line-height: 37px;
+    }
+    .tittleCol p, .story_heading p{
+        font-size: 20px;
+        line-height: 36px;
+        padding: 0px;
+    }
+    .allgive_description{
+        padding: 0px
+    }
+    .happy_hours_cont h2{
+        font-size: 30px;
+    }
+    .manImg img{
+        height: auto;
+    }
+}
+/*responsive section ends */

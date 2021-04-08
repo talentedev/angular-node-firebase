@@ -1,0 +1,16 @@
+#editCardForm {
+  /* padding: 30px; */
+}
+.card-wrapper {
+  background-color: #ddd;
+  padding-left: 15px;
+  border-radius: 3px;
+}
+
+label {
+  color: black;
+}
+
+.form-group {
+  text-align: left;
+}

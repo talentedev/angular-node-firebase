@@ -1,0 +1,23 @@
+<div class="text-center">
+  <h1 class="title">{{ carouselType }}</h1>
+</div>
+<div class="carousel-wrapper">
+  <a class="carousel-control-prev" role="button" (click)="slickModal.slickGoTo(currentSlide-cardCount)">
+    <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+  </a>
+  <div class="carousel-content-wrapper">
+    <ngx-slick-carousel class="carousel" 
+                      #slickModal="slick-carousel" 
+                      [config]="slideConfig"
+                      (afterChange)="afterChange($event)">
+      <div ngxSlickItem *ngFor="let slide of charities" class="slide">
+        <a href={{slide.slug}}>
+          <img [src]="getLogo(slide?.logo)" class="img-fluid">
+        </a>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+  <a class="carousel-control-next" role="button" (click)="slickModal.slickGoTo(currentSlide+cardCount)">
+    <span aria-hidden="true" class="carousel-control-next-icon"></span>
+  </a>
+</div>

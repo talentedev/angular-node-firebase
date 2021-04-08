@@ -1,0 +1,56 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title text-center w-100">Delete Card</h4>
+    <!-- <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button> -->
+  </div>
+  <div class="modal-body">
+    <p>There are scheduled donations associated with this payment method. You need to either assign a new payment method to charities using this payment method or cancel them.</p>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="selectedOption" id="deleteAll" value="deleteAll" checked (click)="onDelete()">
+      <label class="form-check-label" for="deleteAll">
+        Delete all scheduled donations.
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="selectedOption" id="assignCard" value="assignCard" (click)="onAssign()">
+      <label class="form-check-label" for="assignCard">
+        Assign a new payment method.
+      </label>
+    </div>
+    <div *ngIf="selectedOption=='assignCard'" class="pl-5">
+      <div *ngFor="let card of availableCards" class="form-check">
+        <input class="form-check-input" type="radio" name="selectedCard" id="{{ card.id }}" value="{{ card.id }}" [checked]="assignedCard==card" (click)="onSelectCard(card)">
+        <label class="form-check-label" for="{{ card.id }}">
+          <img src="../../../assets/images/{{ card.brand.toLowerCase() }}.png" class="pr-3">
+          ****{{ card.last4 }}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input with-gap" type="radio" name="selectedCard" id="newCard" value="newCard" (click)="onSelectCard(null)">
+        <label class="form-check-label text-dark" for="newCard">
+          New Card
+        </label>
+      </div>
+      <div id="card-number" [ngStyle]="{'visibility': assignedCard==null ? 'visible': 'hidden'}"></div>
+      <div *ngIf="assignedCard==null" class="form-group row">
+        <label for="customerName" class="col-sm-4 col-form-label text-dark">Name on Card</label>
+        <div class="col-sm-8">
+          <input [(ngModel)]="customerName" type="text" id="customerName" class="form-control" placeholder="Name on Card">
+        </div>
+      </div>
+      <div *ngIf="invalidCard" class="alert alert-danger" role="alert">
+        <strong>{{ errorMessage }}</strong>
+      </div>
+    </div>
+    <div class="text-right">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="submit()">
+          <fa-icon *ngIf="isProcessing" [icon]="faSpinner" [spin]="true" class="mr-2"></fa-icon>
+          <span>{{ isProcessing ? 'Deleting...' : 'OK' }}</span>
+        </button>
+      </div>
+  </div>
+  
+</div>

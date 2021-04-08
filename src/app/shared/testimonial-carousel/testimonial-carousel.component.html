@@ -1,0 +1,63 @@
+<mdb-carousel #testimonialsCarousel class="testimonials"
+  [isControls]="false"
+  [animation]="'slide'"
+  [interval]="'10000'">
+  <mdb-carousel-item *ngFor="let testimonial of testimonials; let i = index">
+    <div class="desktop">
+      <div class="view w-100">
+        <img class="d-block w-100" [src]="testimonial.image" alt="First slide">
+      </div>
+      <div class="carousel-caption">
+        <div class="row testimonial-card align-items-center justify-content-start p-3">
+          <div class="card col-sm-12 col-md-8 col-lg-7">
+            <div class="card-body">
+              <p class="card-text">{{ testimonial.content }}</p>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-3 arrow-left" (click)="testimonialsCarousel.previousSlide()">
+                  <img src="../../assets/images/testimonial-arrow-white.png">
+                </div>
+                <div class="col-6">
+                  <span class="testimonial-name">{{ testimonial.author }}</span>
+                  <span class="testimonial-city">{{ testimonial.location }}</span>
+                </div>
+                <div class="col-3 arrow-right" (click)="testimonialsCarousel.nextSlide()">
+                  <img src="../../assets/images/testimonial-arrow-white.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mobile">
+      <div class="view w-100">
+        <img class="d-block w-100" [src]="testimonial.image_mobile" alt="First slide">
+      </div>
+      <div class="carousel-caption">
+        <div class="row testimonial-card align-items-center justify-content-start p-3">
+          <div class="card col-sm-12 col-md-8 col-lg-7">
+            <div class="card-body">
+              <p class="card-text">{{ testimonial.content }}</p>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-3 arrow-left" (click)="testimonialsCarousel.previousSlide()">
+                  <img src="../../assets/images/testimonial-arrow-white.png">
+                </div>
+                <div class="col-6">
+                  <span class="testimonial-name">{{ testimonial.author }}</span>
+                  <span class="testimonial-city">{{ testimonial.location }}</span>
+                </div>
+                <div class="col-3 arrow-right" (click)="testimonialsCarousel.nextSlide()">
+                  <img src="../../assets/images/testimonial-arrow-white.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>

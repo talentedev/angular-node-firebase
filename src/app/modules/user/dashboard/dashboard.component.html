@@ -1,0 +1,266 @@
+<main class="user-dashboard" role="main">
+
+  <ngx-loading [show]="loading"></ngx-loading>
+
+  <section class="section donation-statistics">
+    <div class="row">
+      <div class="col-12" *ngIf="donationOrgs.length > 0">
+        <h1 class="section-title">{{ firstName ? 'High-Five, ' + firstName + '!' : 'My Portfolio' }}</h1>
+        <p class="donor-affirmation">You’ve really worked hard to make a difference and it’s showing!</p>
+      </div>
+      <div class="col-12" *ngIf="donationOrgs.length == 0">
+        <h1 class="section-title">{{ firstName ? 'So far, so good, ' + firstName + '!' : 'My Portfolio' }}</h1>
+        <p class="donor-affirmation">Now you just need to choose a charity and start giving. It'll only take a minute, and you'll be on your way to making a real difference.</p>
+      </div>
+    </div>
+    <div class="row text-center mt-2 overview">
+      <button *ngIf="transactions.length > 0" class="btn btn-export" (click)="viewTransactions()">{{buttonName}}</button>
+      <div class="col-12 col-md-4">
+        <div class="card pt-3 pb-3">
+          <div class="card-body">
+            <h1>${{ totalDonation.toFixed(2) }}</h1>
+            <p>DONATED THIS YEAR</p>
+          </div>
+        </div>
+        <div class="card pt-3 pb-3">
+          <div ngbDropdown>
+            <button class="btn btn-outline-primary" id="donationPeriods" ngbDropdownToggle>{{ selectedProjection }}</button>
+            <div ngbDropdownMenu aria-labelledby="donationPeriods">
+              <button
+                *ngFor="let period of projectionPeriods; let i = index" [attr.data-index]="i"
+                class="dropdown-item dropdown-color-{{i}} pointer"
+                (click)="setProjectionPeriod(i)"
+              >{{ period }}</button>
+            </div>
+          </div>
+          <h2>{{ averageProjection }}</h2>
+          <span *ngIf="approximate">approximate</span>
+        </div>
+      </div>
+      <div class="col-12 col-md-5 chart-wrapper" *ngIf="!showTransaction">
+        <app-stacked-chart *ngIf="updateChart && donationOrgs.length>0" [dataset]="chartData"></app-stacked-chart>
+      </div>
+      <div class="col-12 col-md-8 chart-wrapper" *ngIf="showTransaction">
+        <app-transactions [transactions]="transactions"></app-transactions>
+      </div>
+      <div class="col-12 col-md-3  chart-div" *ngIf="!showTransaction">
+        <div *ngFor="let donationOrg of donationOrgs; let i = index" [attr.data-index]="i" class="donation-item" [ngStyle]="{'border-color': donationOrg.color}" (mouseenter)="selectedOrg=i" (mouseleave)="selectedOrg=null">
+          <div *ngIf="i !== selectedOrg">
+            <h3>${{ donationOrg.daily.toFixed(2) }}/{{ donationOrg.schedule }}</h3>
+            <p>{{ donationOrg.charityname }}</p>
+          </div>
+          <div *ngIf="i === selectedOrg">
+            <div class="row">
+              <div class="col-6" [ngStyle]="{'background-color': '#484c54'}">
+                <h3 class="text-white" style="overflow-wrap: break-word;">${{ donationOrg.daily.toFixed(2) }} / {{ donationOrg.schedule }}</h3>
+                <p class="text-white">{{ donationOrg.charityname }}</p>
+              </div>
+              <div class="col-6 opacity-5" [ngStyle]="{'background-color': '#484c54'}">
+                <h3 class="text-white">${{ donationOrg.projection.toFixed(2) }}</h3>
+                <p class="text-white">by end of 2019</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section hero-charities" *ngIf="donationOrgs.length > 0" #charities_section>
+    <div class="row mb-3">
+      <div class="col-12 col-sm-7">
+        <h3 class="section-title">Manage Your Contributions</h3>
+      </div>
+      <div class="col-12 col-sm-5 text-right">
+        <button class="btn btn-add-charity" (click)="addCharity()">ADD A CHARITY</button>
+      </div>
+    </div>
+    <div *ngIf="!showCharityManageView" class="row active-charities">
+      <div *ngIf="donationOrgs.length==0" class="col-12 text-center p-4">
+        <h5>You have not any contributions yet.</h5>
+      </div>
+      <div *ngFor="let donationOrg of donationOrgs; let i = index" [attr.data-index]="i" class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
+        <div class="card">
+          <img [src]="charityLogos[i]" class="img-fluid">
+          <div class="row charity-details text-center align-items-center">
+            <div class="col">
+              <p>YOU GIVE THE</p>
+              <p>{{ donationOrg.charityname }}</p>
+              <h3 class="pt-2"><small>$</small>{{ donationOrg.daily.toFixed(2) }}</h3>
+              <p>every {{ donationOrg.schedule }}</p>
+              <button class="btn btn-manage-charity" (click)="setShowCharityManage(true, donationOrg, charities_section)">MANAGE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Charity Manage Popup -->
+    <div *ngIf="showCharityManageView" class="charity-manage">
+      <div class="card">
+        <div class="row no-gutters">
+          <div class="col-12">
+            <div class="charity-manage-detail">
+              <!-- <button type="button" class="btn-close text-left" aria-label="Close" (click)="setShowCharityManage(false)">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
+              <div class="text-center pt-3">
+                <p>You’ve raised a total of <strong>{{ choosedOrg.amount | currency:'USD':'symbol':'.2-2' }}</strong> since {{choosedOrg.invoices.length > 0 && choosedOrg.invoices[0].created * 1000 | date:'LLLL'}} <strong>{{choosedOrg.invoices.length > 0 && choosedOrg.invoices[0].created * 1000 | date:'y'}}</strong> for the:</p>
+                <h1 class="text-white">{{ choosedOrg.charityname }}</h1>
+              </div>
+              <div class="donation-dropdown-wrapper text-center">
+                <span class="glyphicon glyphicon-question-sign"></span>
+                <div ngbDropdown>
+                  <button class="btn btn-outline-primary" id="donationByDay" ngbDropdownToggle>
+                    <span class="h1">
+                      <sup>$</sup>{{ choosedOrg.daily.toFixed(2) }} <span class="text-secondary">|</span>
+                      </span><span class="h3"><span class="text-dark">every</span> {{ choosedOrg.schedule }}</span>
+                  </button>
+                  <div ngbDropdownMenu aria-labelledby="donationByDay">
+                    <button (click)="selectDonate(3, 'day')">$3/day</button>
+                    <button (click)="selectDonate(10, 'week')">$10/week</button>
+                    <button (click)="selectDonate(50, 'month')">$50/month</button>
+                  </div>
+                </div>
+                <p class="pointer" (click)="openCustomDonationModal()">Customize Your Donation</p>
+                <p class="pointer text-danger" (click)="cancelDonation()">Cancel This Donation</p>
+              </div>
+              <div class="text-center">
+                <p class="mb-0">via your {{ selectedBrand }} ending in <strong>{{last4}}</strong></p>
+                <p><a href="javascript:;" (click)="changePayment(choosedOrg)">Change Payment Method</a></p>
+              </div>
+              <!-- <div class="price-compare text-center">
+                <p>Your selected settings, <strong>over one year</strong>, will equal:</p>
+                <div class="row">
+                  <div class="col-4">
+                    <h3>52</h3>
+                    <p>ANIMALS SAVED</p>
+                  </div>
+                  <div class="col-4">
+                    <h3>52</h3>
+                    <p>ANIMALS SAVED</p>
+                  </div>
+                  <div class="col-4">
+                    <h3>52</h3>
+                    <p>ANIMALS SAVED</p>
+                  </div>
+                </div>
+              </div> -->
+              <div class="text-center">
+                <button class="btn btn-cancel" (click)="setShowCharityManage(false)">CANCEL</button>
+                <button class="btn btn-save" (click)="updateSchedule()">
+                  <fa-icon *ngIf="isSubmitting" [icon]="faSpinner" [spin]="true" class="mr-2"></fa-icon>
+                  <span>{{ isSubmitting ? 'SAVING...' : 'SAVE CHANGES' }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-5">
+            <img src="../../../assets/images/happy-dog.png" class="img-fluid">
+            <div class="row align-items-center p-4 no-gutters">
+              <div class="col">
+                <p class="text-primary">Latest News</p>
+                <h5>ASPCA uses National Pit Bull Awareness Day to educate those who fear the breed</h5>
+                <a href="#" class="float-right">Read More</a>
+              </div>
+            </div>
+            <div class="p-4">
+              <button class="btn btn-more-charity">MORE ABOUT THIS CHARITY</button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div><!-- Charity Manage Popup End -->
+  </section>
+
+  <section class="section hero-payments" *ngIf="payments.length > 0">
+    <div class="row mb-3">
+      <div class="col-12 col-sm-7">
+        <h3 class="section-title">Payment Settings</h3>
+      </div>
+    </div>
+    <div *ngIf="payments.length==0" class="p-4">
+      <h5 class="text-center">You have not any payment method yet.</h5>
+    </div>
+    <div *ngFor="let payment of payments let i = index" [attr.data-index]="i" class="payment-methods">
+      <!-- <div *ngIf="i==0" class="default-payment"><strong>Default Payment Method</strong></div> -->
+      <div class="row card-info">
+        <div class="col-6 col-sm-4"><img src="../../../assets/images/{{ payment.brand && payment.brand.toLowerCase() }}.png" class="pr-2">{{ payment.brand }} ending in {{ payment.last4}}</div>
+        <div class="col-6 col-sm-2" [ngClass]="{'text-danger' : payment.expired}">
+          {{ payment.expired ? 'Expired': 'Expires'}} {{ payment.exp_month < 10 ? '0' : '' }}{{ payment.exp_month }}/{{ payment.exp_year }}
+        </div>
+        <div class="col-12 col-sm-3" [ngClass]="{'text-danger' : payment.expired}">
+          Used for {{ payment.charities == undefined ? 0 : payment.charities.length }} {{payment.charities == undefined ? 'charities' : (payment.charities.length <= 1 ? 'charity' : 'charities')}}
+        </div>
+        <div class="col-12 col-sm-3">
+          <button class="col-xs-12 btn btn-manage-charity" (click)="togglePaymentDetail(i)">{{ showPaymentDetail[i]? 'HIDE DETAILS': 'SHOW DETAILS' }}</button>
+        </div>
+      </div>
+      <div [ngbCollapse]="!showPaymentDetail[i]" class="row collapse expand-payment-details" id="payment-details-one">
+        <div class="col-4">
+          <div class="row card-name" *ngIf="payment.name != null">
+            <div class="col">
+              <div class="name-title">Name on Card</div>
+              <div class="name-info">{{ payment.name }}</div>
+            </div>
+          </div>
+          <div class="row card-address">
+            <div class="col">
+              <div class="address-title">Billing Address</div>
+              <div class="address-info">
+                <span class="street">{{ payment.address_line1 }}</span>
+                <span class="street">{{ payment.address_line2 }}</span>
+                <span class="city-state-zip">{{ payment.address_state }} {{ payment.address_zip }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="row card-options">
+            <div class="col">
+              <div class="edit" (click)="editCard(payment)">Edit Information</div>
+              <div class="lost-or-stolen">Lost or Stolen?</div>
+              <div class="delete-card" (click)="deleteCard(payment)">Delete</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-8">
+          <h5>Supporting Charities</h5>
+          <ul class="payment-charities">
+            <li *ngFor="let charity of payment.charities">{{ charity.charityname }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero-payments">
+    <div class="row mb-3">
+      <div class="col-9">
+        <h3 class="section-title">Your Profile</h3>
+      </div>
+    </div>
+    <div class="row">
+      <form class="col-md-6" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+        <div class="form-group row">
+          <label for="firstName" class="col-sm-4 col-form-label">First name</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="lastName" class="col-sm-4 col-form-label">Last Name</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="email" class="col-sm-4 col-form-label">Email</label>
+          <div class="col-sm-8">
+            <input type="email" class="form-control" id="email" formControlName="email" placeholder="Email">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-right m-0">
+          <fa-icon *ngIf="isSavingProfile" [icon]="faSpinner" [spin]="true" class="mr-2"></fa-icon>
+          <span>{{ isSavingProfile ? 'Saving...' : 'Save' }}</span>
+        </button>
+      </form>
+    </div>
+  </section>
+</main>

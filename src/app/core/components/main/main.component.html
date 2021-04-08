@@ -1,0 +1,48 @@
+<main role="main">
+
+  <app-featured-carousel></app-featured-carousel>
+  
+  <section class="hero-sacrifice">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-8 offset-2 offset-sm-0 col-sm-5 col-lg-6">
+          <img [src]="sacrifice.image" class="img-fluid align-self-center">
+        </div>
+        <div class="col-12 col-sm-7 col-lg-6">
+          <h1>Small sacrifices, over time, can make a big difference.</h1>
+          <p>{{sacrifice.text}}</p>
+          <div class="button" [routerLink]="['/about']">Learn More</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-works">
+    <div class="row align-items-center justify-content-end">
+      <div class="col-12 col-sm-6 col-xl-4">
+        <h1>What Is AllGive?</h1>
+        <p>AllGive is devoted to helping everyone give, regardless of financial constraints. The makers of AllGive have created a one-of-a-kind payment system that allows for microdonations to your favorite charities. If you can afford as little as $3/day, you can donate over $100/month to your favorite charity and never feel a thing. A comprehensive list of charities is available to choose from and more are being added every day. <a routerLink="/start">Create an account</a> and start giving today!</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-charities">
+
+    <app-charities-carousel [carouselType]="carouselType"></app-charities-carousel>
+
+    <div *ngIf="carouselType === 'Available Charities'">
+      <div class="text-center">
+        <div class="view-all">
+          <a routerLink="/charities">View All Charities</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <app-testimonial-carousel></app-testimonial-carousel>
+
+  <section class="hero-adds">
+    <div class="container">
+    </div>
+  </section>
+</main>

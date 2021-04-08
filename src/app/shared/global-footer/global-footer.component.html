@@ -1,0 +1,40 @@
+<footer role="footer">
+  <div class="container pt-5 pb-5">
+    <div class="row justify-content-between align-items-center footer-content">
+      <div class="col-12 col-sm-6">
+        <div class="row footer-logo">
+          <div class="col">
+            <div class="footer-logo">
+              <img src="./assets/images/logo-white.png">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8 col-lg-auto">
+            <a href="/contact">Contact Us</a>
+          </div>
+          <div class="col-sm-8 col-lg-auto">
+            <a href="/pages/legal">Legal</a>
+          </div>
+          <div class="col-sm-8 col-lg-auto">
+            <a href="/about">About Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="row justify-content-end">
+          <div class="col-12 col-md-8">
+            <a class="btn btn-allgive-primary" href="{{authService.authState? '/portfolio': '/back'}}">
+              {{ authService.authState ? 'My Portfolio': 'Get Started' }}
+            </a>
+          </div>
+        </div>
+        <div class="row justify-content-end mt-4">
+          <div class="col-12 copyright text-right">
+            <p id="copyright">&copy; Copyright {{currentYear}} AllGive. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

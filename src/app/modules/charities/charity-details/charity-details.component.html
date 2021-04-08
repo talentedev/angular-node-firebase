@@ -1,0 +1,88 @@
+<main id="charity-details" role="main" class="pb-5">
+  <div class="hero-charity jumbotron jumbotron-fluid" [ngStyle]="coverStyle">
+    <div class="logo" [ngStyle]="logoStyle">Make A Wish</div>
+  </div>
+  <div class="container charity-overview">
+    <div class="row category justify-content-center">
+      <div class="col-12 col-sm-8">
+        <span class="desktop-category">
+          <span class="text-danger" *ngIf="charity && charity.urgent">Urgent help is needed!</span>
+        </span>
+        <span class="modal-trigger btn btn-md btn-primary"(click)="open()" *ngIf="isDonate && initialized">Donate</span>
+        <span class="modal-trigger btn btn-md btn-primary"(click)="openManager()" *ngIf="!isDonate && initialized">Manage</span>
+      </div>
+    </div>
+    <div class="row name justify-content-center">
+      <div class="col-12 col-sm-8">
+        <span class="modal-trigger btn btn-md btn-primary"(click)="open()" *ngIf="isDonate && initialized">Donate</span>
+        <span class="modal-trigger btn btn-md btn-primary"(click)="openManager()" *ngIf="!isDonate && initialized">Manage</span>
+        <span class="h1 charity-name">{{ charityName }}</span>
+        <p class="mobile-category">
+          <span class="text-danger ml-1" *ngIf="charity && charity.urgent">Urgent help is needed!</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container charity-text mt-3">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-8">
+        <div [innerHTML]="charity && (charity.description | mdToHtml)"></div>
+        <div class="media-container">
+          <!-- <img src="{{ charity && charity.fields.media?.fields.file.url}}"> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mb-3">
+    <span class="modal-trigger btn btn-md btn-primary"(click)="open()" *ngIf="isDonate && initialized">Donate</span>
+    <span class="modal-trigger btn btn-md btn-primary"(click)="openManager()" *ngIf="!isDonate && initialized">Manage</span>
+  </div>
+  <div class="container charity-media"></div>
+  <div class="container-fluid charity-testimonial">
+    <div class="row justify-content-center">
+      <div class="col-sm-5 col-12 align-self-center">
+        <p>{{ testimonial.quote }}</p>
+        <span class="testimonial-name">{{ testimonial.name }}</span>
+        <span class="testimonial-city">{{ testimonial.location }}</span>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="container news">
+    <div class="row headline justify-content-center">
+      <div class="col-4">
+        <h3>Latest News</h3>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-3">
+        <img src="../../../assets/images/news-latest-1.jpg">
+      </div>
+      <div class="col-5">
+        <h5>2017 Walk For Wishes Atlanta</h5>
+        <p>The Walk For Wishes Atlanta event raised over $350,000 for local wishes!</p>
+        <a class="read-more"
+           href="#">Read More</a>
+      </div>
+    </div>
+    <div class="row justify-content-center align-items-center">
+      <div class="col-3">
+        <img src="../../../assets/images/news-latest-2.jpg">
+      </div>
+      <div class="col-5">
+        <h5>2017 Walk For Wishes Atlanta</h5>
+        <p>The Walk For Wishes Atlanta event raised over $350,000 for local wishes!</p>
+        <a class="read-more"
+           href="#">Read More</a>
+      </div>
+    </div>
+  </div> -->
+  <!-- ##################################################
+  Carousel: Charities
+  ################################################## -->
+  <section class="related-charities">
+    <app-charities-carousel [carouselType]="carouselType"></app-charities-carousel>
+  </section>
+
+</main>
+
+<router-outlet name="payment-modal"></router-outlet>

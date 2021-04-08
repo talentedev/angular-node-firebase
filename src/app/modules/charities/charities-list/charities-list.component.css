@@ -1,0 +1,114 @@
+button.dropdown-toggle {
+    width: 200px;
+}
+.dropdown-menu {
+    width: 100%;
+}
+.search-input {
+    width: 350px;
+    margin-left: 30px;
+}
+
+.charity-grid .card-wrapper {
+    margin: 15px 0;
+}
+
+.charity-grid .card-image {
+    height: 23vw;
+}
+
+.charity-grid .alert-danger span {
+    font-family: "Nunito";
+}
+
+.card div.card-image .card-cover {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card div.card-image:hover .card-cover {
+    filter: none;
+}
+
+div.card-image img.logo{
+    position: absolute;
+    width: 35%;
+    height: 35%;
+    bottom: 5%;
+    right: 5%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 10;
+    transition: width 0.5s ease-in-out, height 0.5s ease-in-out, top 0.5s ease-in-out, left 0.5s ease-in-out;
+    filter: drop-shadow(-5px 5px 5px gray);
+}
+
+div.card-image:hover img.logo {
+    width: 15%;
+    height: 15%;
+}
+
+.card-charity-text {
+    position: absolute;
+    width: 70%;
+    bottom:5%;
+    left: 5%;
+    color: #ffffff;
+    line-height: 1.25;
+    text-shadow: 1px 1px 2px #000000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+div.card-image:hover .card-charity-text {
+    opacity: 1;
+}
+
+.card-charity-text .card-urgent {
+    color: red;
+    font-style: italic;
+}
+ 
+.card-charity-text .card-cta {
+    text-transform: uppercase;
+    margin-top: 6px;
+    font-size: 0.6rem;
+    font-weight: 800;
+}
+
+.card-columns .card {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.charity-filters {
+    width: 100%;
+    height: 5vh;
+    border: 1px solid #000000;
+}
+
+.dropdown.show .dropdown-menu {
+    opacity: 1;
+}
+@media (max-width: 768px) {
+    .jumbotron {
+        text-align: center;
+    }
+    .search-input {
+        width: 280px;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    .charity-grid .card-image {
+        height: 45vw;
+    }
+
+    .card-charity-text {
+        display: none;
+    }
+}

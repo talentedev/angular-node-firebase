@@ -1,0 +1,15 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <h4 class="modal-title text-center w-100">Cancel Donation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-center">
+    <p class="text-dark">Are you sure you want to cancel this donation?</p>
+    <div class="text-right">
+      <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">No</button>
+      <button type="button" class="btn btn-primary" (click)="submit()">Yes</button>
+    </div>
+  </div>
+</div>

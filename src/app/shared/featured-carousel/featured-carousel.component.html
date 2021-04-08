@@ -1,0 +1,18 @@
+<mdb-carousel [isControls]="false" [animation]="'slide'" [interval]="'10000'">
+  <mdb-carousel-item *ngFor="let charity of charities ; let i = index">
+    <div class="view w-100">
+      <img class="d-block w-100" [src]="bgImages[i]" alt="First slide">
+    </div>
+    <div class="carousel-caption">
+      <div class="row align-items-center">
+        <div id="carousel-text" class="col-md-12 col-lg-6 col-xl-5 text-left">
+          <h1>Help the world a little at a time.</h1>
+          <p>Micro-donating makes giving easy.</p>
+          <p class="featured" *ngIf="!isMobile"><a [routerLink]="['/charities', slugs[i]]">{{ charityNames[i] }}</a></p>
+          <p class="featured" *ngIf="isMobile"><br><a [routerLink]="['/charities', slugs[i]]">{{ charityNames[i] }}</a></p>
+          <div class="button" [routerLink]="['/start']">How It Works</div>
+        </div>
+      </div>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel>
